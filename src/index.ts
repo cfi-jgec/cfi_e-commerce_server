@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.json({ limit: '16kb' }))
 app.use(express.urlencoded({ extended: true, limit: '16kb' }))
 app.use(cors({
-    origin: ['http://localhost:6001', 'http://localhost:3001', process.env.FRONTEND_URL as string],
+    origin: process.env.FRONTEND_URL as string,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true
 }))
