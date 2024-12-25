@@ -36,6 +36,7 @@ export const adminLogin = asyncHandler(async (req: Request, res: Response) => {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         sameSite: 'none',
+        secure: true
     });
     return res.status(200).json({
         message: "Login successful",
@@ -73,7 +74,12 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
             success: false
         });
     }
-    res.cookie('token', creteCookies({ email, userId: user.id }), { httpOnly: true });
+    res.cookie('token', creteCookies({ email, userId: user.id }), {
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000,
+        sameSite: 'none',
+        secure: true
+    });
     return res.status(200).json({
         message: "Login successful",
         error: false,
@@ -198,7 +204,12 @@ export const verifyOtp = asyncHandler(async (req: Request, res: Response) => {
             isVerified: true
         }
     });
-    res.cookie('token', creteCookies({ email, userId: user.id }), { httpOnly: true });
+    res.cookie('token', creteCookies({ email, userId: user.id }), { 
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000,
+        sameSite: 'none',
+        secure: true
+    });
     return res.status(200).json({
         message: "User registered successfully",
         error: false,
