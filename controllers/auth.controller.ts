@@ -35,8 +35,8 @@ export const adminLogin = asyncHandler(async (req: Request, res: Response) => {
     res.cookie('token', creteCookies({ email }), {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
-        // sameSite: 'none',
-        // secure: true
+        sameSite: 'none',
+        secure: true
     });
     return res.status(200).json({
         message: "Login successful",
