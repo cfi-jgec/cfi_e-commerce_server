@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv'
 import cors from "cors"
+import cookieParser from 'cookie-parser';
 
 dotenv.config()
 const app = express();
@@ -11,6 +12,7 @@ import ProductRoute from "../routers/review.route"
 import AuthRoute from "../routers/auth.route"
 
 // configure middlewares
+app.use(cookieParser());
 app.use(express.json({ limit: '16kb' }))
 app.use(express.urlencoded({ extended: true, limit: '16kb' }))
 app.use(cors({

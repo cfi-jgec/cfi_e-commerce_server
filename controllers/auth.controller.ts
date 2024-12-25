@@ -17,7 +17,7 @@ const generateOtp = () => {
 
 // admin login
 export const adminLogin = asyncHandler(async (req: Request, res: Response) => {
-    const { email, password } = req.body; 
+    const { email, password } = req.body;
     if (!(email && password)) {
         return res.status(400).json({
             message: "All fields are required",
@@ -32,7 +32,7 @@ export const adminLogin = asyncHandler(async (req: Request, res: Response) => {
             success: false
         });
     }
-    res.cookie('token', creteCookies({ email }), { httpOnly: true });
+    res.cookie('token', creteCookies({ email }), { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
     return res.status(200).json({
         message: "Login successful",
         error: false,
