@@ -36,9 +36,7 @@ export const adminLogin = asyncHandler(async (req: Request, res: Response) => {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         sameSite: 'none',
-        secure: true,
-        domain: process.env.DOMAIN,
-        path: '/'
+        secure: true
     });
     return res.status(200).json({
         message: "Login successful",
@@ -80,9 +78,7 @@ export const userLogin = asyncHandler(async (req: Request, res: Response) => {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         sameSite: 'none',
-        secure: true,
-        domain: process.env.DOMAIN,
-        path: '/'
+        secure: true
     });
     return res.status(200).json({
         message: "Login successful",
@@ -208,13 +204,11 @@ export const verifyOtp = asyncHandler(async (req: Request, res: Response) => {
             isVerified: true
         }
     });
-    res.cookie('token', creteCookies({ email, userId: user.id }), { 
+    res.cookie('token', creteCookies({ email, userId: user.id }), {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         sameSite: 'none',
-        secure: true,
-        domain: process.env.DOMAIN,
-        path: '/'
+        secure: true
     });
     return res.status(200).json({
         message: "User registered successfully",
