@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 const authentication = async (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.headers);
     const authHeader = req.headers.cookie;
     if (!authHeader) {
         return res.status(404).json("Authorization header is missing");

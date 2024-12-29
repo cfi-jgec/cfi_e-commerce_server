@@ -44,7 +44,6 @@ const getProductById = asyncHandler(async (req: Request, res: Response) => {
 
 // add new products in the database
 const addProducts = asyncHandler(async (req: Request, res: Response) => {
-    console.log(req.body);
     const { productId, name, price, description, image, stock, discount, subtitle, category } = req.body;
     if (!(productId && name && price && description && image && stock)) {
         return res.status(400).json({
